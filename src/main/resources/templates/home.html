@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Chotto Management System</title>
 </head>
 <body>
-
+<h1>Chotto Management System</h1>
+<div>
+  <h2>
+    <ul>
+      <li><a th:href="@{/staff}">Staff Roster</a></li>
+      <li><a th:href="@{/employments}">Employment Details</a></li>
+      <li><a th:href="@{/new-staffPHPHPH}">New Staff Registry</a></li>
+    </ul>
+  </h2>
+</div>
 </body>
 </html>

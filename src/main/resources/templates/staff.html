@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Staff Roster</title>
 </head>
 <body>
-
+<h2>Staff Roster</h2>
+</div>
+<table border="1">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Gender</th>
+    <th>Age</th>
+    <th>Email Address</th>
+    <th>Residence</th>
+    <th>Position</th>
+    <th>Active</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="detail : ${staff}">
+    <td th:text="${detail.staff.id}">placeholder</td>
+    <td th:text="${detail.staff.name}">placeholder</td>
+    <td th:text="${detail.staff.gender}">placeholder</td>
+    <td th:text="${detail.staff.age}">placeholder</td>
+    <td th:text="${detail.staff.email}">placeholder</td>
+    <td th:text="${detail.staff.residence}">placeholder</td>
+    <td th:text="${detail.staff.position}">placeholder</td>
+    <td th:text="${detail.staff.active}">placeholder</td>
+    <!-- Update link -->
+    <td>
+      <a th:href="@{/PHPHPH( id = ${detail.staff.id})}">Edit</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
 </body>
 </html>
