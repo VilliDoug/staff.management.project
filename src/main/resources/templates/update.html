@@ -1,10 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Title</title>
+  <title>Edit Staff Information</title>
 </head>
 <body>
+<h2>Edit Staff Information</h2>
 
+<form th:action="@{/edit-staff}" th:object="${details}" method="post">
+  <div>
+    <label for="name">Name：</label>
+    <input type="text" id="name" th:field="*{staff.name}" required/>
+    <span th:errors="*{staff.name}" style="color: red;"></span>
+  </div>
+  <div class="gender-group">
+    <label>Gender：</label>
+
+    <input type="radio" id="gender-male" name="gender" value="Male" th:field="*{staff.gender}" required/>
+    <label for="gender-male">Male</label>
+
+    <input type="radio" id="gender-female" name="gender" value="Female" th:field="*{staff.gender}">
+    <label for="gender-female">Female</label>
+
+    <input type="radio" id="gender-other" name="gender" value="Other" th:field="*{staff.gender}">
+    <label for="gender-other">Other</label>
+  </div>
+  <div>
+    <label for="age">Age:</label>
+    <input type="text" id="age" th:field="*{staff.age}"/>
+  </div>
+  <div>
+    <label for="email">E-mail Address：</label>
+    <input type="email" id="email" th:field="*{staff.address}"/>
+  </div>
+  <div>
+    <label for="residence">Residence：</label>
+    <input type="text" id="residence" th:field="*{staff.residence}"/>
+  </div>
+  <div>
+    <label for="position">Position：</label>
+    <input type="number" id="position" th:field="*{student.position}" />
+  </div>
+  <!-- Remarks -->
+  <div>
+    <label for="active">Active：</label>
+    <input type="checkbox" id="active" th:field="*{staff.active}"></input>
+  </div>
+  <div>
+    <button type="submit">Confirm</button>
+  </div>
+</form>
 </body>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @org.springframework.stereotype.Controller
@@ -38,14 +39,34 @@ public class Controller {
     model.addAttribute("staff", converter.convertDetails(staff, employments));
     return "staff";
   }
-  @PostMapping("/staff")
-  public String postStaff(@ModelAttribute Details details, BindingResult result) {
+  @GetMapping("/new-register")
+  public String newStaff(Model model) {
+    model.addAttribute("details", new Details());
+    return "register";
+  }
+
+  @PostMapping("/register")
+  public String registerStaff(@ModelAttribute Details details, BindingResult result) {
     if (result.hasErrors()) {
-      return "staff";
+      return "register";
     }
     service.insertStaff(details);
     return "redirect:/staff";
   }
-//
+//update
+  @GetMapping("/staff/{id}")
+  public String viewStaff(@PathVariable String id, Model model) {
+    com.villidoug.staff.management.domain.Details details = service.searchStaff(id);
+    model.addAttribute("staff", details);
+    return "new-staff";
+}
+  @PostMapping("/edit-staff")
+  public String putStaff(@ModelAttribute Details details, BindingResult result) {
+    if (result.hasErrors()) {
+      return "edit-staff";
+    }
+    service.updateStaff(details);
+    return "redirect:/staff/";
+  }
 
 }
