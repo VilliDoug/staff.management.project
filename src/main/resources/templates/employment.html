@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Staff Roster</title>
+  <title>Employment Details</title>
 </head>
 <body>
-<h2>Staff Roster</h2>
+<h2>Employment Details</h2>
 <table border="1">
   <thead>
   <tr>
     <th>ID</th>
-    <th>Name</th>
-    <th>Gender</th>
-    <th>Age</th>
-    <th>Email Address</th>
-    <th>Residence</th>
-    <th>Position</th>
-    <th>Active</th>
+    <th>Employee ID</th>
+    <th>Job Title</th>
+    <th>Department</th>
+    <th>Start Date</th>
+    <th>Termination Date</th>
+    <th>Contract Type</th>
   </tr>
   </thead>
   <tbody>
   <tr th:each="detail : ${employment}">
-    <td th:text="${detail.employment.id}">placeholder</td>
-    <td th:text="${detail.employment.employeeId}">placeholder</td>
-    <td th:text="${detail.employment.jobTitle}">placeholder</td>
-    <td th:text="${detail.employment.department}">placeholder</td>
-    <td th:text="${detail.employment.startDate}">placeholder</td>
-    <td th:text="${detail.employment.terminationDate}">placeholder</td>
-    <td th:text="${detail.employment.contractType}">placeholder</td>
+    <td th:text="${detail.id}">placeholder</td>
+    <td th:text="${detail.employeeId}">placeholder</td>
+    <td th:text="${detail.jobTitle}">placeholder</td>
+    <td th:text="${detail.department}">placeholder</td>
+    <td th:text="${detail.startDate}">placeholder</td>
+    <td th:text="${detail.terminationDate}">placeholder</td>
+    <td th:text="${detail.contractType}">placeholder</td>
     <!-- Update link -->
 <!--    <td>-->
 <!--      <a th:href="@{/PHPHPH( id = ${detail.staff.id})}">Edit</a>-->

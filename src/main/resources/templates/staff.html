@@ -5,7 +5,6 @@
 </head>
 <body>
 <h2>Staff Roster</h2>
-</div>
 <table border="1">
   <thead>
   <tr>
@@ -31,10 +30,13 @@
     <td th:text="${detail.staff.active}">placeholder</td>
     <!-- Update link -->
     <td>
-      <a th:href="@{/update( id = ${detail.staff.id})}">Edit</a>
+      <a th:href="@{/staff/{id}( id = ${detail.staff.id})}">Edit</a>
     </td>
   </tr>
   </tbody>
 </table>
+<div>
+  <a th:href="@{/home}">Return home</a>
+</div>
 </body>
 </html>

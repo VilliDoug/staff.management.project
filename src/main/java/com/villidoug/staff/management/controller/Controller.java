@@ -44,6 +44,12 @@ public class Controller {
     model.addAttribute("details", new Details());
     return "register";
   }
+//employments
+  @GetMapping("/employment")
+  public String getEmployment(Model model) {
+    model.addAttribute("employment", service.showEmployment());
+    return "employment";
+  }
 
   @PostMapping("/register")
   public String registerStaff(@ModelAttribute Details details, BindingResult result) {
@@ -56,17 +62,17 @@ public class Controller {
 //update
   @GetMapping("/staff/{id}")
   public String viewStaff(@PathVariable String id, Model model) {
-    com.villidoug.staff.management.domain.Details details = service.searchStaff(id);
-    model.addAttribute("staff", details);
-    return "new-staff";
+    Details details = service.searchStaff(id);
+    model.addAttribute("details", details);
+    return "update";
 }
-  @PostMapping("/edit-staff")
-  public String putStaff(@ModelAttribute Details details, BindingResult result) {
+  @PostMapping("/staff/{id}")
+  public String putStaff(@ModelAttribute Details putDetails, BindingResult result) {
     if (result.hasErrors()) {
-      return "edit-staff";
+      return "update";
     }
-    service.updateStaff(details);
-    return "redirect:/staff/";
+    service.updateStaff(putDetails);
+    return "redirect:/staff";
   }
 
 }

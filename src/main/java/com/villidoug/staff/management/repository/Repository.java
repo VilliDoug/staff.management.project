@@ -38,12 +38,12 @@ public interface Repository {
 
 //  update
   @Update("UPDATE staff SET name = #{name}, gender = #{gender}, age = #{age}, email = #{email},"
-      + " residence = #{residence}, position = #{position}, active = #{active})"
+      + " residence = #{residence}, position = #{position}, active = #{active}"
       + " WHERE id = #{id}")
   void updateStaff(Staff staff);
 
   @Update("UPDATE employment SET job_title = #{jobTitle}, department = #{department},"
-      + " termination_date = #{terminationDate}, contract_type = #{contractType})"
+      + " termination_date = #{terminationDate}, contract_type = #{contractType}"
       + " WHERE id = #{id}")
   void updateEmployment(Employment employment);
 

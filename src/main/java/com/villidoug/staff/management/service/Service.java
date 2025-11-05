@@ -7,7 +7,6 @@ import com.villidoug.staff.management.domain.Details;
 import com.villidoug.staff.management.repository.Repository;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,7 +23,7 @@ public class Service {
     this.repository = repository;
   }
 
-  //  show staff or employment service
+//  show staff or employment service
   public List<Staff> showStaff() {
     return repository.showStaff();
   }
@@ -42,27 +41,24 @@ public class Service {
     return details;
   }
 
-  // insert staff and employment service
+//  insert staff and employment
   @Transactional
   public void insertStaff(Details details) {
     repository.insertStaff(details.getStaff());
-    for (Employment employment : details.getEmployment()) {
-      employment.setEmployeeId(details.getStaff().getId());
-      employment.setStartDate(String.valueOf(LocalDate.now()));
-      repository.insertEmployment(employment);
-
-    }
+    Employment employment = new Employment();
+    employment.setEmployeeId(details.getStaff().getId());
+    employment.setJobTitle(details.getStaff().getPosition());
+    employment.setStartDate(String.valueOf(LocalDate.now()));
+    repository.insertEmployment(employment);
   }
 
-  //update
   @Transactional
   public void updateStaff(Details details) {
     repository.updateStaff(details.getStaff());
     for (Employment employment : details.getEmployment()) {
       repository.updateEmployment(employment);
-
     }
+
   }
+
 }
-
-
