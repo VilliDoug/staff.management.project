@@ -8,10 +8,11 @@ import com.villidoug.staff.management.repository.Repository;
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@org.springframework.stereotype.Service
-public class Service {
+@Service
+public class MainService {
 
   private Repository repository;
 
@@ -19,7 +20,7 @@ public class Service {
   private Converter converter;
 
   @Autowired
-  public Service(Repository repository) {
+  public MainService(Repository repository) {
     this.repository = repository;
   }
 

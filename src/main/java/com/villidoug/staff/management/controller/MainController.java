@@ -4,9 +4,10 @@ import com.villidoug.staff.management.controller.converter.Converter;
 import com.villidoug.staff.management.data.Employment;
 import com.villidoug.staff.management.data.Staff;
 import com.villidoug.staff.management.domain.Details;
-import com.villidoug.staff.management.service.Service;
+import com.villidoug.staff.management.service.MainService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +15,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-@org.springframework.stereotype.Controller
-public class Controller {
+@Controller
+public class MainController {
 
-  private Service service;
+  private MainService service;
   private Converter converter;
 
   @Autowired
-  public Controller(Service service, Converter converter) {
+  public MainController(MainService service, Converter converter) {
     this.service = service;
     this.converter = converter;
   }
